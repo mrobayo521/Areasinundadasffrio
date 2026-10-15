@@ -18,13 +18,13 @@
   --bg:#0f1519; --panel:#161e23; --ink:#e6edf0; --ink-2:#a9b8c0; --ink-3:#7d8d96;
   --line:#2a363d; --grid:#222d33; --land:#1d262b; --land-line:#2f3b42; --other:#263137;
   --accent:#6da7ec; --accent-soft:#1c3a5c; --sel:#eb6834; --band:#0b2233; --band-ink:#e8f1f7; --band-ink-2:#8fa9bb;
-  --q1:#184f95; --q2:#1c5cab; --q3:#2a78d6; --q4:#3987e5; --q5:#6da7ec; --q6:#9ec5f4; --q7:#cde2fb;
+  --q1:#cde2fb; --q2:#9ec5f4; --q3:#6da7ec; --q4:#3987e5; --q5:#256abf; --q6:#184f95; --q7:#0d366b;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1519; --panel:#161e23; --ink:#e6edf0; --ink-2:#a9b8c0; --ink-3:#7d8d96;
   --line:#2a363d; --grid:#222d33; --land:#1d262b; --land-line:#2f3b42; --other:#263137;
   --accent:#6da7ec; --accent-soft:#1c3a5c; --sel:#eb6834; --band:#0b2233; --band-ink:#e8f1f7; --band-ink-2:#8fa9bb;
-  --q1:#184f95; --q2:#1c5cab; --q3:#2a78d6; --q4:#3987e5; --q5:#6da7ec; --q6:#9ec5f4; --q7:#cde2fb;
+  --q1:#cde2fb; --q2:#9ec5f4; --q3:#6da7ec; --q4:#3987e5; --q5:#256abf; --q6:#184f95; --q7:#0d366b;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
@@ -968,7 +968,7 @@ function colorMap(){
   selLayer.clearLayers();if(S.sel){selLayer.addData(MUN.features.find(f=>f.id===S.sel));selLayer.setStyle(()=>({color:css("--sel"),weight:3.5,fill:false}))}
   const b=BREAKS[S.metric],lab=v=>S.metric==="ai"?es(v):String(v).replace(".",",");
   const cells=[`<span><i style="background:${css("--q1")}"></i>&lt; ${lab(b[0])}</span>`].concat(b.map((v,i)=>`<span><i style="background:${css("--q"+(i+2))}"></i>≥ ${lab(v)}</span>`));
-  document.getElementById("legend").innerHTML=`<span>${S.metric==="ai"?"Área inundada (ha)":"Área inundada (% del municipio)"}</span><div class="ramp">${cells.join("")}</div><span><span class="sw" style="background:transparent;border:2px solid ${css("--sel")}"></span>Seleccionado</span>`;
+  document.getElementById("legend").innerHTML=`<span>${S.metric==="ai"?"Área inundada (ha)":"Área inundada (% del municipio)"} · <strong>A mayor inundación, azul más oscuro</strong></span><div class="ramp">${cells.join("")}</div><span><span class="sw" style="background:transparent;border:2px solid ${css("--sel")}"></span>Seleccionado</span>`;
   document.getElementById("mapSub").textContent=S.dep?`${S.dep}: ${rows().length} municipios con área inundada. Clic en un municipio para ver su detalle.`:"Arrastre para desplazar y use la rueda o los botones para acercar. Clic en un municipio para ver su detalle.";
 }
 
